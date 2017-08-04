@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimeSheetComponent } from './time-sheet/time-sheet.component';
+import { DatePickerModule } from 'ng2-datepicker';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TimeSheetComponent } from './time-sheet/time-sheet.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
