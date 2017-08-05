@@ -4,11 +4,10 @@
     </div>
 </div>
 <br>
+<div [hidden]="errormsg" class="alert alert-danger">No projects</div>
 <div class="shadow">
     <div class="container">
-        <!-- <h2 class="title">List of Projects</h2> -->
-        <!-- <br><br> -->
-        <!-- <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p> -->
+
         <table class="table">
             <thead>
                 <tr>
@@ -19,7 +18,7 @@
             </thead>
             <tbody *ngFor="let data of resp">
 
-                <tr class="click" (click)="passdata()">
+                <tr class="click" (click)="passdata(data.projectId)">
                     <td>{{data.projectName}}</td>
                     <td>{{data.projectManagerId[0].managerId.firstName}} {{data.projectManagerId[0].managerId.secondName}}</td>
                     <td>{{data.clientName}}</td>

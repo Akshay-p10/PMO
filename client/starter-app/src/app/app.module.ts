@@ -10,6 +10,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProjectListService } from './project-list/project-list.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { StoreService } from './store.service';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { ProjectListService } from './project-list/project-list.service';
     //TimeSheetComponent,
     LoginComponent,
     ProjectListComponent,
-    TopBarComponent
+    TopBarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { ProjectListService } from './project-list/project-list.service';
     AppRoutingModule,
     BsDropdownModule.forRoot()
   ],
-  providers: [ProjectListService],
+  providers: [ProjectListService, StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

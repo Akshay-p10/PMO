@@ -11,10 +11,10 @@ export class ProjectListService {
 
   constructor(private http: Http) { }
 
-   private apiURL = 'http://10.0.1.196/api/employees/5/projects';
+   private apiURL = 'http://10.0.1.196/api/employees/';
 
-   getProjectDetails(){
-       return this.http.get(this.apiURL)
+   getProjectDetails(id){
+       return this.http.get(this.apiURL+id+'/projects')
        .toPromise()
         .then((response:Response) => {return response.json()});
    }

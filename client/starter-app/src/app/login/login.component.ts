@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router } from '@angular/router';
+import { StoreService } from '../store.service';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private storeService: StoreService,
+    private route : Router
+  ) { }
 
   login(val) {
-  	console.log(val);
+    this.storeService.setEmpId(val);
+    console.log(val, "set");
+    this.route.navigate(['./dashboard']);
   }
 
   ngOnInit() {
