@@ -7,12 +7,17 @@ import { AppComponent } from './app.component';
 //import { TimeSheetComponent } from './time-sheet/time-sheet.component';
 import { LoginComponent } from './login/login.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { ProjectListService } from './project-list/project-list.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     //TimeSheetComponent,
-    LoginComponent
+    LoginComponent,
+    ProjectListComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +26,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AppRoutingModule,
     BsDropdownModule.forRoot()
   ],
-  providers: [],
+  providers: [ProjectListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
