@@ -1,0 +1,30 @@
+<div class="shadow">
+    <div class="container">
+        <h2 class="title">List of Projects</h2>
+    </div>
+</div>
+<br>
+<div [hidden]="errormsg" class="alert alert-danger">No projects</div>
+<div class="shadow">
+    <div class="container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Manager Name</th>
+                    <th>Client</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let data of resp">
+
+                <tr class="click" (click)="passData(data.projectId)">
+                    <td>{{data.projectName}}</td>
+                    <td>{{data.projectManagerId[0].managerId.firstName}} {{data.projectManagerId[0].managerId.secondName}}</td>
+                    <td>{{data.clientName}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

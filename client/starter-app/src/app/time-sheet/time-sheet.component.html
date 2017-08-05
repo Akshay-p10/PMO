@@ -1,61 +1,100 @@
 <div class="time-sheet">
   <div class="container">
     <div>
-   <div class="col-md-9"><h3 style="text-align:center;">Time Sheet</h3></div> 
-   <div class="col-md-3 addbtn"><button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info" (click) = "console()" >+</button></div></div>
-   <hr> 
-   <table class="table">
-    <thead>
-      <tr>
-        <th>Date </th>
-        <th>Time Sheet</th>
-        
-      </tr>
-    </thead>
-    <tbody *ngFor = "let data of resp">
-      <tr (click) = "getDetails(data)" >
-        <td data-toggle="modal" data-target="#viewModal" (click) = "getDetails(data)">{{data.pmoTime | date}}</td>
-        <td data-toggle="modal" data-target="#viewModal" >Total Activity - {{data.pmoData.activities.length}} <br/> Total Time - {{data.pmoData.totalHours}} Hours</td>
-        <td><button type="button"  class="btn btn-info">Edit </button></td>
-      </tr>
-    </tbody>
-  </table>
-  <hr> 
-</div>
+     <div class="col-md-9"><h3 style="text-align:center;">Time Sheet</h3></div> 
+     <div class="col-md-3 addbtn"><button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info" >+</button></div></div>
+     <hr> 
+     <table class="table">
+      <thead>
+        <tr>
+          <th>Date </th>
+          <th>Time Sheet</th>
+
+        </tr>
+      </thead>
+      <tbody *ngFor = "let data of resp">
+        <tr (click) = "getDetails(data)" >
+          <td data-toggle="modal"(click) = "getDetails(data)">{{data.pmoTime | date}}</td>
+          <td data-toggle="modal"  >Total Activity - {{data.pmoData.noOfActivities}} <br/> Total Time - {{data.pmoData.totalHours}} Hours</td>
+          <td><button type="button" data-toggle="modal" data-target="#viewModal" data-target="#viewModal" class="btn btn-info">Edit </button></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr> 
+  </div>
 
 
 
 
-<!--Add-time-sheet Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!--Add-time-sheet Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add time Sheet</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="control-label">Date</label>
+              <ng2-datepicker class="datepick" [options]="options" [(ngModel)]="obj.pmoTime" name="date"></ng2-datepicker>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="control-label">Activities:</label>
+              <div class="" >
+                <ss-multiselect-dropdown name="astivity" [options]="activity" [(ngModel)]="optionsModel" (ngModelChange)="onChange($event)" ></ss-multiselect-dropdown><div class="col-md-6">
+                <select [(ngModel)]="obj.pmoData.totalHours" name="Select name" class="ui selection dropdown"> 
+                  <option *ngFor="let n of names" [attr.value]="n">{{n}}</option>
+                </select>
+                Hours</div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" (click)="onclick(obj)" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- view-modal -->
+<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add time Sheet</h4>
+        <h4 class="modal-title" id="myModalLabel">Edit time Sheet</h4>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="recipient-name" class="control-label">Date</label>
-            <ng2-datepicker class="datepick" [options]="options" [(ngModel)]="obj.pmoTime" name="date"></ng2-datepicker>
+            <label for="recipient-name" class="control-label">Date :-</label>
+          <b> &nbsp; {{modalDate | date}}</b>
           </div>
           <div class="form-group">
-            <label for="message-text" class="control-label">Activities:</label>
-            <div class="row"><ss-multiselect-dropdown [options]="activity" ></ss-multiselect-dropdown><div class="col-md-6">
-            <select [(ngModel)]="obj.pmoData.totalHours" name="Select name" class="ui selection dropdown"> 
-        <option *ngFor="let n of names" [attr.value]="n">{{n}}</option>
-      </select>
-            Hours</div></div>
+            <label for="message-text" class="control-label">Activity:</label>
+           <div class="" >
+                <ss-multiselect-dropdown name="astivity" [options]="activity" [(ngModel)]="optionsModel" (ngModelChange)="onChange($event)" ></ss-multiselect-dropdown><div class="col-md-6">
+                <select [(ngModel)]="obj.pmoData.totalHours" name="Select name" class="ui selection dropdown"> 
+                  <option *ngFor="let n of names" [attr.value]="n">{{n}}</option>
+                </select>
+                Hours</div>
+              </div>
+      
+            <!--  <textarea class="form-control" id="message-text"></textarea> -->
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" (click)="onclick(obj)" class="btn btn-primary">Save changes</button>
+  
       </div>
     </div>
   </div>
 </div>
-
-
