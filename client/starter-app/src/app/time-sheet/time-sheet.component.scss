@@ -1,0 +1,30 @@
+.time-sheet .datepicker-container[_ngcontent-c2] .datepicker-input-container[_ngcontent-c2] .datepicker-input[_ngcontent-c2] {
+    display: inline-block;
+    width: 160px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ced4da;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+}
+.time-sheet .modal-body {
+    position: relative;
+    line-height: 50px;
+    padding: 15px;
+}
+
+
+
+select {
+  display: inline-block;
+  height: 25px;
+  width:40px;
+  outline: none;
+  color: #74646e;
+  border: 1px solid #C8BFC4;
+  border-radius: 4px;
+  box-shadow: inset 1px 1px 2px #ddd8dc;
+  background: #fff;
+}
